@@ -22,7 +22,7 @@ import org.bdgenomics.adam.util.ADAMFunSuite
 class AFFromVCFSuite extends ADAMFunSuite {
 
   sparkTest("converting variant contexts") {
-    val path = ClassLoader.getSystemClassLoader.getResource("af.vcf").getFile
+    val path = Thread.currentThread().getContextClassLoader.getResource("af.vcf").getFile
     val afs = AFFromVCF(path, sc)
     assert(afs.count === 2)
   }

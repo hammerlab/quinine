@@ -28,7 +28,6 @@
   
   <modules>
     <module>quinine-core</module>
-    <module>quinine-cli</module>
   </modules>
   
   <licenses>

@@ -17,7 +17,6 @@
  */
 package org.bdgenomics.quinine.rdd.variation
 
-import org.apache.spark.SparkContext._
 import org.apache.spark.rdd.RDD
 import org.bdgenomics.adam.rdd.ADAMContext._
 import org.bdgenomics.adam.util.ADAMFunSuite
@@ -54,7 +53,7 @@ class GenotypeConcordanceRDDFunctionsSuite extends ADAMFunSuite {
   }
 
   sparkTest("concordance of identical VCFs should be 1.0") {
-    val path = ClassLoader.getSystemClassLoader.getResource("small.vcf").getFile
+    val path = Thread.currentThread().getContextClassLoader.getResource("small.vcf").getFile
 
     val gts: RDD[Genotype] = sc.loadGenotypes(path)
     assert(gts.filter(_.getSampleId == "NA12878").count === 5)
